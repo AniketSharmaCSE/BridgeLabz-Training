@@ -1,6 +1,6 @@
 using System;
 
-public class UppercaseConversion
+public class UpperCaseConversion
 {
     //Method to convert text to uppercase using ASCII logic
     static string ConvertToUppercaseManually(string name)
