@@ -1,0 +1,17 @@
+using System;
+
+public class EBook : Book
+{
+    //Constructor calling base class constructor
+    public EBook(string ISBN, string title, string author)
+        : base(ISBN, title, author)
+    {
+    }
+
+    //Method to access public and protected members
+    public void DisplayEBookDetails()
+    {
+        Console.WriteLine("ISBN: " + ISBN);
+        Console.WriteLine("Title: " + title);
+    }
+}
