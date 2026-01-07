@@ -8,6 +8,9 @@ namespace Employee
         private int count = 0;
         private Random random = new Random();
 
+        private const int wage_per_hour = 20;
+        private const int full_day_hours = 8;
+
         public void AddEmployee()
         {
             Employee employee = new Employee();
@@ -43,6 +46,24 @@ namespace Employee
             }
 
 
+        }
+
+
+        // UC2 Calculate Daily Wage
+        public void CalculateDailyWage()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (employees[i].EmployeeAttendance == "Present")
+                {
+                    employees[i].DailyWage = wage_per_hour * full_day_hours;
+                }
+                else
+                {
+                    employees[i].DailyWage = 0;
+                }
+            }
+           
         }
 
 
