@@ -10,6 +10,8 @@ namespace Employee
         private string employeeattendance;   // UC1 Employee Attendance Check
         private int dailywage; //UC2 Daily Wage
         private string employeetype; //UC3 Employee Type
+        private int monthlywage;   //UC5 Monthly Wage
+
 
 
         public string EmployeeId
@@ -88,11 +90,26 @@ namespace Employee
             }
         }
 
+        //UC5 Monthly Wage  
+        public int MonthlyWage
+    {   
+            get
+            {
+            return monthlywage;
+            }
+            set
+            {
+            monthlywage = value;
+            }
+
+}
+
+
 
 
         public override string ToString()
         {
-            return "Employee ID : " + employeeid + "\nEmployee Name : " + employeename + "\nEmployee Salary : " + employeesalary + "\nEmployee Attendance : " + employeeattendance + "\nDaily Wage : " + dailywage;
+            return "Employee ID : " + employeeid + "\nEmployee Name : " + employeename + "\nEmployee Salary : " + employeesalary + "\nEmployee Attendance : " + employeeattendance + "\nDaily Wage : " + dailywage+"\nMonthly Wage : " + monthlywage;
         }
     
     }

@@ -13,6 +13,9 @@ namespace Employee
 
         private const int part_time_hours = 4;
 
+        private const int working_days = 20;
+
+
 
         public void AddEmployee()
         {
@@ -79,6 +82,25 @@ namespace Employee
                 }
             }
         }
+
+        //UC5:Calculate Monthly Wage (20 Working Days)
+        public void CalculateMonthlyWage()
+    {
+    for (int i = 0; i < count; i++)
+    {
+        int totalWage = 0;
+
+        for (int day = 1; day <= working_days; day++)
+        {
+            totalWage = totalWage + employees[i].DailyWage;
+        }
+
+        employees[i].MonthlyWage = totalWage;
+    }
+
+    Console.WriteLine("Monthly Wage Calculated Successfully");
+}
+
 
 
 
