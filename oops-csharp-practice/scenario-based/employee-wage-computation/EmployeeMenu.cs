@@ -9,13 +9,14 @@ namespace Employee
         public void Menu()
         {
             employeeService = new EmployeeUtilityImpl();
-
+            //UC4: Employee Menu Driven Program
             while (true)
             {
                 Console.WriteLine("1. Add Employee");
-                Console.WriteLine("2. Attendance Check");
-                Console.WriteLine("3. Display Employee");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("2. Attendance Check ");
+                Console.WriteLine("3. Calculate Daily Wage using Switch Case ");
+                Console.WriteLine("4. Display Employee");
+                Console.WriteLine("5. Exit");
 
                 int choice = int.Parse(Console.ReadLine());
 
@@ -30,15 +31,21 @@ namespace Employee
                         break;
 
                     case 3:
-                        employeeService.DisplayEmployee();
+                        employeeService.CalculateDailyWage();
                         break;
 
                     case 4:
+                        employeeService.DisplayEmployee();
+                        break;
+
+                    case 5:
                         return;
-                
+
+                    default:
+                        Console.WriteLine("Invalid Choice");
+                        break;
                 }
             }
-       
         }
     }
 }
