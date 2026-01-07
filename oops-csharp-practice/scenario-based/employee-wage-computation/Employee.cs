@@ -9,6 +9,8 @@ namespace Employee
         private string employeesalary;
         private string employeeattendance;   // UC1 Employee Attendance Check
         private int dailywage; //UC2 Daily Wage
+        private string employeetype; //UC3 Employee Type
+
 
         public string EmployeeId
         {
@@ -71,6 +73,18 @@ namespace Employee
             set 
             {
                 dailywage = value; 
+            }
+        }
+        //UC3 Employee Type    
+        public string EmployeeType
+        {
+            get
+            {
+                return employeetype;
+            }
+            set
+            {
+                employeetype = value;
             }
         }
 
