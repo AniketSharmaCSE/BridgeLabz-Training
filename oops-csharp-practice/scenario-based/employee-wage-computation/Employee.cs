@@ -11,6 +11,8 @@ namespace Employee
         private int dailywage; //UC2 Daily Wage
         private string employeetype; //UC3 Employee Type
         private int monthlywage;   //UC5 Monthly Wage
+        private int totalworkinghours;   //UC6 Calculate Wage till a condition of total working hours or days is reached
+
 
 
 
@@ -103,13 +105,26 @@ namespace Employee
             }
 
 }
+        //UC6 Total Working Hours   
+            public int TotalWorkingHours
+            {
+                get
+                {
+                    return totalworkinghours;
+                }
+                set
+                {
+                    totalworkinghours = value;
+                }
+            }
+
 
 
 
 
         public override string ToString()
         {
-            return "Employee ID : " + employeeid + "\nEmployee Name : " + employeename + "\nEmployee Salary : " + employeesalary + "\nEmployee Attendance : " + employeeattendance + "\nDaily Wage : " + dailywage+"\nMonthly Wage : " + monthlywage;
+            return "Employee ID : " + employeeid + "\nEmployee Name : " + employeename + "\nEmployee Salary : " + employeesalary + "\nEmployee Attendance : " + employeeattendance + "\nDaily Wage : " + dailywage+"\nMonthly Wage : " + monthlywage + "\nTotal Working Hours : " + totalworkinghours;
         }
     
     }

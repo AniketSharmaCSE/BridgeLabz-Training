@@ -15,6 +15,10 @@ namespace Employee
 
         private const int working_days = 20;
 
+        private const int max_working_days = 20;
+        private const int max_working_hours = 100;
+
+
 
 
         public void AddEmployee()
@@ -100,6 +104,48 @@ namespace Employee
 
     Console.WriteLine("Monthly Wage Calculated Successfully");
 }
+
+        //UC6: Calculate Wage till total working hours or days reached
+public void CalculateWageTillCondition()
+{
+    for (int i = 0; i < count; i++)
+    {
+        int totalHours = 0;
+        int totalDays = 0;
+        int totalWage = 0;
+
+        while (totalDays < max_working_days && totalHours < max_working_hours)
+        {
+            int empCheck = random.Next(0, 3);
+            int hoursWorked = 0;
+
+            switch (empCheck)
+            {
+                case 1: // Full Time
+                    hoursWorked = full_day_hours;
+                    break;
+
+                case 2: // Part Time
+                    hoursWorked = part_time_hours;
+                    break;
+
+                default: // Absent
+                    hoursWorked = 0;
+                    break;
+            }
+
+            totalHours = totalHours + hoursWorked;
+            totalWage = totalWage + (hoursWorked * wage_per_hour);
+            totalDays++;
+        }
+
+        employees[i].TotalWorkingHours = totalHours;
+        employees[i].MonthlyWage = totalWage;
+    }
+
+    Console.WriteLine("Wage Calculated Till Condition Reached");
+}
+
 
 
 
