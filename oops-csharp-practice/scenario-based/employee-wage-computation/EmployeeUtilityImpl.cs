@@ -8,15 +8,15 @@ namespace Employee
         private int count = 0;
         private Random random = new Random();
 
-        private const int wage_per_hour = 20;
-        private const int full_day_hours = 8;
+        private const int WagePerHour = 20;
+        private const int FullDayHours = 8;
 
-        private const int part_time_hours = 4;
+        private const int PartTimeHours = 4;
 
-        private const int working_days = 20;
+        private const int WorkingDays = 20;
 
-        private const int max_working_days = 20;
-        private const int max_working_hours = 100;
+        private const int MaxWorkingDays = 20;
+        private const int MaxWorkingHours = 100;
 
 
 
@@ -61,7 +61,10 @@ namespace Employee
                     employees[i].EmployeeAttendance = "Present";
                     employees[i].EmployeeType = "Part Time";
                 }
+                Console.WriteLine(employees[i].EmployeeName + " is " + employees[i].EmployeeAttendance + " (" + employees[i].EmployeeType + ")");
             }
+                    
+
         }
 
 
@@ -74,27 +77,31 @@ namespace Employee
             {
                 if (employees[i].EmployeeType == "Full Time")
                 {
-                    employees[i].DailyWage = wage_per_hour * full_day_hours;
+                    employees[i].DailyWage = WagePerHour * FullDayHours;
                 }
                 else if (employees[i].EmployeeType == "Part Time")
                 {
-                    employees[i].DailyWage = wage_per_hour * PART_TIME_HOURS;
+                    employees[i].DailyWage = WagePerHour * PartTimeHours;
                 }
                 else
                 {
                     employees[i].DailyWage = 0;
                 }
+                Console.WriteLine("Daily Wage of " + employees[i].EmployeeName + " = " + employees[i].DailyWage);
             }
+           
+
         }
 
         //UC5:Calculate Monthly Wage (20 Working Days)
         public void CalculateMonthlyWage()
     {
-    for (int i = 0; i < count; i++)
+            int totalWage = 0;
+            for (int i = 0; i < count; i++)
     {
-        int totalWage = 0;
+        
 
-        for (int day = 1; day <= working_days; day++)
+        for (int day = 1; day <= WorkingDays; day++)
         {
             totalWage = totalWage + employees[i].DailyWage;
         }
@@ -102,7 +109,7 @@ namespace Employee
         employees[i].MonthlyWage = totalWage;
     }
 
-    Console.WriteLine("Monthly Wage Calculated Successfully");
+    Console.WriteLine("Monthly Wage Calculated Successfully and is: "+ totalWage);
 }
 
         //UC6: Calculate Wage till total working hours or days reached
@@ -114,7 +121,7 @@ public void CalculateWageTillCondition()
         int totalDays = 0;
         int totalWage = 0;
 
-        while (totalDays < max_working_days && totalHours < max_working_hours)
+        while (totalDays < MaxWorkingDays && totalHours < MaxWorkingHours)
         {
             int empCheck = random.Next(0, 3);
             int hoursWorked = 0;
@@ -122,11 +129,11 @@ public void CalculateWageTillCondition()
             switch (empCheck)
             {
                 case 1: // Full Time
-                    hoursWorked = full_day_hours;
+                    hoursWorked = FullDayHours;
                     break;
 
                 case 2: // Part Time
-                    hoursWorked = part_time_hours;
+                    hoursWorked = PartTimeHours;
                     break;
 
                 default: // Absent
@@ -135,15 +142,16 @@ public void CalculateWageTillCondition()
             }
 
             totalHours = totalHours + hoursWorked;
-            totalWage = totalWage + (hoursWorked * wage_per_hour);
+            totalWage = totalWage + (hoursWorked * WagePerHour);
             totalDays++;
         }
 
         employees[i].TotalWorkingHours = totalHours;
         employees[i].MonthlyWage = totalWage;
-    }
+        Console.WriteLine("Wage Calculated Till Condition Reached. Total wage: "+totalWage);
+            }
 
-    Console.WriteLine("Wage Calculated Till Condition Reached");
+   
 }
 
 
