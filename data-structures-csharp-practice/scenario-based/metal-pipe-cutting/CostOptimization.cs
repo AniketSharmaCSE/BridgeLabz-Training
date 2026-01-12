@@ -18,5 +18,19 @@ class CostOptimization
         int maxRevenue = cuttingService.CalculateMaxRevenue(rod);
         Console.WriteLine("Rod Length: " + rodLength);
         Console.WriteLine("Maximum revenue using optimized cutting: " + maxRevenue);
+
+        //UC2 Custom rod length
+        Console.WriteLine("\nEnter custom rod length:");
+        int customLength = Convert.ToInt32(Console.ReadLine());
+
+        Rod rodB = new Rod(customLength, prices);
+        int revenueB = cuttingService.CalculateMaxRevenue(rodB);
+
+        Console.WriteLine("CustomRod Length: " + customLength);
+        Console.WriteLine("Maximum revenue: " + revenueB);
+
+
+
+
     }
 }
