@@ -27,4 +27,26 @@
 
         return dp[n];
     }
+
+    //UC2: Method to calclulate revenue when waste constraint is introduced
+    public int CalculateRevenueWithWasteConstraint(int woodLength, int maxAllowedWaste, int[] prices)
+    {
+        int bestRevenue = 0;
+
+        for (int usedLength = woodLength;
+             usedLength >= woodLength - maxAllowedWaste;
+             usedLength--)
+        {
+            Wood tempWood = new Wood(usedLength, prices);
+            int revenue = CalculateMaxRevenue(tempWood);
+
+            if (revenue > bestRevenue)
+            {
+                bestRevenue = revenue;
+            }
+        }
+
+        return bestRevenue;
+    }
+
 }
