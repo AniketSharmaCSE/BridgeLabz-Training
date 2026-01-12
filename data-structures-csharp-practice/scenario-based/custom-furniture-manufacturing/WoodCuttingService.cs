@@ -49,4 +49,29 @@
         return bestRevenue;
     }
 
+    //UC3: Method to calculate maximizing revenue with minimum waste
+    public int CalculateBestRevenueWithMinimumWaste(int woodLength, int[] prices, out int waste)
+    {
+        int bestRevenue = 0;
+        waste = woodLength;
+
+        for (int usedLength = woodLength; usedLength >= 0; usedLength--)
+        {
+            Wood tempWood = new Wood(usedLength, prices);
+            int revenue = CalculateMaxRevenue(tempWood);
+            int currentWaste = woodLength - usedLength;
+
+            if (revenue > bestRevenue ||
+               (revenue == bestRevenue && currentWaste < waste))
+            {
+                bestRevenue = revenue;
+                waste = currentWaste;
+            }
+        }
+
+        return bestRevenue;
+    }
+
+
+
 }

@@ -14,7 +14,6 @@ class FurnitureOptimization
 
         int maxRevenue = service.CalculateMaxRevenue(wood);
 
-        Console.WriteLine("Context A: Custom Furniture Manufacturing");
         Console.WriteLine("Wood Length: " + woodLength);
         Console.WriteLine("Maximum Revenue: " + maxRevenue);
 
@@ -25,8 +24,18 @@ class FurnitureOptimization
         int revenueWithConstraint =
             service.CalculateRevenueWithWasteConstraint(woodLength,maxAllowedWaste,prices);
 
-        Console.WriteLine("\nScenario B (User-defined Waste Constraint)");
         Console.WriteLine("Maximum Allowed Waste: " + maxAllowedWaste + " ft");
         Console.WriteLine("Maximum Revenue: " + revenueWithConstraint);
+
+        //UC3: Best revenue with minimal waste
+        int waste;
+
+        int bestRevenueUC3 = service.CalculateBestRevenueWithMinimumWaste(woodLength, prices, out waste);
+
+        Console.WriteLine("Best Revenue: " + bestRevenueUC3);
+        Console.WriteLine("Waste: " + waste + " ft");
+
+
+
     }
 }
