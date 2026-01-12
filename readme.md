@@ -1,110 +1,324 @@
-\# BridgeLabz-Training 🚀
+BridgeLabz-Training
+Overview
 
+This repository documents my daily learning progress and hands-on practice during the BridgeLabz Training Program.
+It focuses on Git, Java, C#, .NET fundamentals, Object-Oriented Programming, Data Structures, and scenario-based problem solving to build strong software development skills.
 
+📅 Daily Learning Log
+📅 16 December 2025
 
-Welcome to my BridgeLabz-Training repo!  
+Topics
 
-This README serves as a central log of my daily progress across different topics, branches, and .Net and C# modules.  
+Git setup
 
-Each entry includes concepts covered and skills practiced.
+GitHub repository creation
 
+Git commands
 
+📅 17 December 2025
 
----
+Topics
 
+Java fundamentals
 
+Problem solving
 
-\## Day 1: December 17, 2025 - GitHub Setup and Java Basics 📅
+📅 18 December 2025
 
-\*\*Topic:\*\* GitHub Repository Setup, Folder Structure Organization 📁  
+Topics
 
-\*\*What I Learnt:\*\* 📚
+Overview of C# language
 
-\- Setting up a GitHub repository for project tracking. 🔄
+C# Compiler and Common Intermediate Language (CIL)
 
-\- Creating and organizing folder structures for Java and C# codebases. 🗂️
+.NET architecture
 
-\- Basic Git commands for version control (init, add, commit, push). 💻
+📅 19 December 2025
 
+Topics
 
+C# basic data types
 
----
+Variables and operators
 
+Type conversion
 
+Taking user input
 
-\## Day 2: December 18, 2025 - Introduction to .NET and C# 🔧
+📅 20 December 2025
 
-\*\*Topic:\*\* .NET Framework, C# Syntax, Java to C# Conversion 🛠️  
+Topics
 
-\*\*What I Learnt:\*\* 📚
+C# access modifiers
 
-\- Basics of .NET ecosystem and C# language. 🌐
+public, private, protected
 
-\- Key differences between Java and C# (e.g., Main method, using statements, Console I/O). 🔄
+internal, protected internal, private protected
 
-\- Converting Java programs to C# equivalents, handling syntax changes. 🔄
+📅 22 December 2025
 
-\- Building and running C# programs with dotnet CLI. ▶️
+Topics
 
+Control flow statements
 
+Boolean data type and expressions
 
----
+Logical operators
 
+if–else ladder
 
+Loops (for, while)
 
-\## Day 3: December 19, 2025 - Introduction to basics of C# 💻📁
+break and continue
 
-\*\*Topic:\*\* Operators, Data Types and Type Conversion  🔧    
+switch statement
 
-\*\*What I Learnt:\*\* 📚
+📅 23 December 2025
 
-\- To perform basic operation on variables.
+Topics
 
-\- To study different data types and their conversion.
+Arrays and array operations
 
-\- To read and understand various operators
+Using loops with arrays
 
+Multidimensional arrays
 
+2D arrays (matrix)
 
----
+📅 24 December 2025
 
+Topics
 
+User-defined methods
 
-\##Day 3: December 19, 2025 - Introduction to basics of C# 💻📁
+Static methods
 
-\*\*Topic:\*\* Operators, Data Types and Type Conversion 🔧
+Recursive methods
 
-\*\*What I Learnt:\*\* 📚
+.NET standard library methods
 
--To perform basic operations on variables.
+System.Math class
 
--To study different data types and their conversion.
+📅 25 December 2025
 
--To take user input using Console.ReadLine().
+Topics
 
--To understand operator precedence in expressions.
+Methods problem solving (Level 1, Level 2, Level 3)
 
+📅 26 December 2025
 
+Topics
 
----
+C# strings and string handling
 
+String arrays and built-in methods
 
+Review problems on arrays
 
-\##Day 4: December 22, 2025 - C# Control Flows 🔁
+📅 27 December 2025
 
-\*\*Topic:\*\* Conditional Statements and Loops 🧠
+Topics
 
-\*\*What I Learnt:\*\* 📚
+ASCII character codes
 
--To work with boolean data types and expressions.
+Exception handling
 
--To use logical operators in conditions.
+Exception hierarchy and types
 
--To implement if, else if, and else statements.
+Checked vs unchecked exceptions
 
--To use for and while loops.
+📅 28 December 2025
 
--To apply break and continue statements.
+Topics
 
--To use switch statements for multiple conditions.
+Date and time functions
 
+Common built-in functions
+
+String handling problems
+
+Built-in problems (Level 1 & Level 2)
+
+📅 29 December 2025
+
+Topics
+
+Scenario-based problems:
+
+Snake and Ladder
+
+Sentence Formatter & Text Analyzer
+
+Temperature Analyzer
+
+Student Score Manager
+
+📅 30 December 2025
+
+Topics
+
+Scenario-based systems:
+
+Library Management System
+
+EduQuiz – Student Quiz Grader
+
+Object-Oriented Programming:
+
+Classes and Objects
+
+📅 31 December 2025
+
+Topics
+
+Scenario-based problems:
+
+Bank Account Manager
+
+Mathematical Utility Class
+
+Invoice Generator
+
+Constructors
+
+Instance vs class variables
+
+Access modifiers
+
+📅 01 January 2026
+
+Topics
+
+Cafeteria Menu App
+
+sealed, static keywords
+
+is operator
+
+Lab practice (Level 1)
+
+📅 02 January 2026
+
+Topics
+
+Scenario-based problems:
+
+Bus Route Distance Tracker
+
+Festival Lucky Draw
+
+Object modeling
+
+Class, object, and sequence diagrams
+
+📅 03 January 2026
+
+Topics
+
+Object modeling practice
+
+Inheritance:
+
+Single level
+
+Multilevel
+
+Hierarchical
+
+Method overriding
+
+Constructor inheritance
+
+Polymorphism and access modifiers
+
+📅 04 January 2026
+
+Topics
+
+Hybrid inheritance
+
+Inheritance-based problem solving
+
+📅 05 January 2026
+
+Topics
+
+Scenario-based systems:
+
+Hospital Patient Management System
+
+Vehicle Rental Application
+
+Encapsulation
+
+Polymorphism
+
+📅 06 January 2026
+
+Topics
+
+Scenario-based systems:
+
+Bird Sanctuary System
+
+Customer Service Call Log Manager
+
+Interface and abstract class
+
+OOP concepts practice
+
+📅 07 January 2026
+
+Topics
+
+Employee Wage Computation System
+
+OOP problem solving
+
+📅 08 January 2026
+
+Topics
+
+Smart Home Automation System
+
+Introduction to Data Structures
+
+Linked Lists:
+
+Singly
+
+Doubly
+
+Circular
+
+📅 09 January 2026
+
+Topics
+
+OOPS-based project: FitTrack – Fitness Tracker
+
+DSA-based project: ATM Dispenser Logic
+
+Stack, Queue, HashMap, Hashing
+
+📅 11 January 2026
+
+Topics
+
+Sorting algorithms:
+
+Bubble
+
+Insertion
+
+Merge
+
+Quick
+
+Selection
+
+Heap
+
+Counting
+
+Sorting-based problem solving
