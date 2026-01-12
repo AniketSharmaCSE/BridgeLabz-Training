@@ -11,16 +11,4 @@ public class Rod
         this.Prices = prices;
     }
 
-    //UC2: Method to update price for custom-length order
-    public void UpdatePrice(int length, int newPrice)
-    {
-        if (length <= 0 || length > Length)
-        {
-            Console.WriteLine("Invalid rod length for price update.");
-            return;
-        }
-
-        Prices[length] = newPrice;
-    }
-
 }
