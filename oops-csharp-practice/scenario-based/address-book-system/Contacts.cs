@@ -2,6 +2,7 @@
 
 public class Contacts
 {
+    //UC1: Encapsulated class with attributes
     private string firstName;
     private string lastName;
     private string address;
@@ -12,9 +13,7 @@ public class Contacts
     private string email;
 
     // Constructor to create a contact
-    public Contacts(string firstName, string lastName, string address,
-                    string city, string state, string zip,
-                    string phoneNumber, string email)
+    public Contacts(string firstName, string lastName, string address, string city, string state, string zip, string phoneNumber, string email)
     {
         this.firstName = firstName;
         this.lastName = lastName;

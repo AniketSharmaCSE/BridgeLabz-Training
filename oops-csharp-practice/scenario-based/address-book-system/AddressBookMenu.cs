@@ -17,7 +17,7 @@ public class AddressBookMenu
         do
         {
             Console.WriteLine();
-            Console.WriteLine("1. Add Contact");
+            Console.WriteLine("1. Add Contact"); //UC2
             Console.WriteLine("0. Exit");
             Console.WriteLine("Enter your choice:");
 
