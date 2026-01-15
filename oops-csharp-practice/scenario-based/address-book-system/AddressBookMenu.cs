@@ -1,0 +1,43 @@
+﻿using System;
+
+public class AddressBookMenu
+{
+    private Contacts contact;
+    private IContactUtility contactUtility;
+
+    public AddressBookMenu()
+    {
+        contactUtility = new ContactUtilityImpl();
+    }
+
+    public void Start()
+    {
+        int choice = 0;
+
+        do
+        {
+            Console.WriteLine();
+            Console.WriteLine("1. Add Contact");
+            Console.WriteLine("0. Exit");
+            Console.WriteLine("Enter your choice:");
+
+            choice = Convert.ToInt32(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    contact = contactUtility.AddContact();
+                    break;
+
+                case 0:
+                    Console.WriteLine("Exiting Address Book");
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid choice");
+                    break;
+            }
+
+        } while (choice != 0);
+    }
+}
