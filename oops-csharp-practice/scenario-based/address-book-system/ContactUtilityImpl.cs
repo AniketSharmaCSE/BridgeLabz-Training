@@ -98,6 +98,50 @@ public class ContactUtilityImpl : IContactUtility
         }
 
         Console.WriteLine("Contact updated successfully");
+        ShowContact(contact);
     }
+
+
+    //Method to display contact details
+    public void ShowContact(Contacts contact)
+    {
+        if (contact == null)
+        {
+            Console.WriteLine("No contact to display");
+            return;
+        }
+
+        Console.WriteLine("Contact Details: ");
+        Console.WriteLine("Name: " + contact.GetFullName());
+        Console.WriteLine("Address: " + contact.GetAddressDetails());
+        Console.WriteLine("Phone: " + contact.GetPhoneNumber());
+        Console.WriteLine("Email: " + contact.GetEmail());
+        Console.WriteLine();
+    }
+
+
+    //UC4:Method to delete existing contact
+    public Contacts DeleteContact(Contacts contact)
+    {
+        if (contact == null)
+        {
+            Console.WriteLine("No contact available to delete");
+            return null;
+        }
+
+        Console.WriteLine("Enter First Name to delete contact:");
+        string name = Console.ReadLine();
+
+        if (!contact.GetFirstName().Equals(name))
+        {
+            Console.WriteLine("Contact not found");
+            return contact;
+        }
+
+        Console.WriteLine("Contact deleted successfully");
+        return null; 
+    }
+
+
 
 }
