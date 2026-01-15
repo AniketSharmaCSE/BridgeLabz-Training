@@ -45,4 +45,41 @@ public class Contacts
         return email;
     }
 
+    public string GetFirstName()
+    {
+        return firstName;
+    }
+
+    //UC3:Setter methods to edit
+    public void SetAddress(string address)
+    {
+        this.address = address;
+    }
+
+    public void SetCity(string city)
+    {
+        this.city = city;
+    }
+
+    public void SetState(string state)
+    {
+        this.state = state;
+    }
+
+    public void SetZip(string zip)
+    {
+        this.zip = zip;
+    }
+
+    public void SetPhoneNumber(string phoneNumber)
+    {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void SetEmail(string email)
+    {
+        this.email = email;
+    }
+
+
 }

@@ -18,6 +18,7 @@ public class AddressBookMenu
         {
             Console.WriteLine();
             Console.WriteLine("1. Add Contact"); //UC2
+            Console.WriteLine("2. Edit Contact"); //UC3
             Console.WriteLine("0. Exit");
             Console.WriteLine("Enter your choice:");
 
@@ -27,6 +28,10 @@ public class AddressBookMenu
             {
                 case 1:
                     contact = contactUtility.AddContact();
+                    break;
+
+                case 2:
+                    contactUtility.EditContact(contact);
                     break;
 
                 case 0:
