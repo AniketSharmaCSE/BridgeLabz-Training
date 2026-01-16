@@ -1,14 +1,14 @@
 ﻿public interface IContactUtility
 {
-    //UC2: method to add contacts
+    //UC2
     Contacts AddContact();
 
-    //Method to show contact details
-    void ShowContact(Contacts contact);
+    //UC3
+    void EditContact(Contacts[] contacts, int count);
 
-    //UC3: method to edit existing contact
-    void EditContact(Contacts contact);
+    //UC4
+    int DeleteContact(Contacts[] contacts, int count);
 
-    //UC4: method to delete existing contact
-    Contacts DeleteContact(Contacts contact);
+    //UC5
+    void ShowAllContacts(Contacts[] contacts, int count);
 }

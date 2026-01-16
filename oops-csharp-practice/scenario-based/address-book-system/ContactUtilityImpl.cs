@@ -39,67 +39,31 @@ public class ContactUtilityImpl : IContactUtility
     }
 
     //UC3:Method to edit existing contact
-    public void EditContact(Contacts contact)
+    public void EditContact(Contacts[] contacts, int count)
     {
-        if (contact == null)
+        if (count == 0)
         {
-            Console.WriteLine("No contact available to edit");
+            Console.WriteLine("No contacts available");
             return;
         }
 
-        Console.WriteLine("Enter First Name to edit contact:");
+        Console.WriteLine("Enter First Name to edit:");
         string name = Console.ReadLine();
 
-        if (!contact.GetFirstName().Equals(name))
+        for (int i = 0; i < count; i++)
         {
-            Console.WriteLine("Contact not found");
-            return;
-        }
-
-        Console.WriteLine("What do you want to edit?");
-        Console.WriteLine("1. Address");
-        Console.WriteLine("2. City");
-        Console.WriteLine("3. State");
-        Console.WriteLine("4. Phone Number");
-        Console.WriteLine("5. Email");
-
-        int choice = Convert.ToInt32(Console.ReadLine());
-
-        switch (choice)
-        {
-            case 1:
-                Console.WriteLine("Enter new Address:");
-                contact.SetAddress(Console.ReadLine());
-                break;
-
-            case 2:
+            if (contacts[i].GetFirstName().Equals(name))
+            {
                 Console.WriteLine("Enter new City:");
-                contact.SetCity(Console.ReadLine());
-                break;
-
-            case 3:
-                Console.WriteLine("Enter new State:");
-                contact.SetState(Console.ReadLine());
-                break;
-
-            case 4:
-                Console.WriteLine("Enter new Phone Number:");
-                contact.SetPhoneNumber(Console.ReadLine());
-                break;
-
-            case 5:
-                Console.WriteLine("Enter new Email:");
-                contact.SetEmail(Console.ReadLine());
-                break;
-
-            default:
-                Console.WriteLine("Invalid choice");
+                contacts[i].SetCity(Console.ReadLine());
+                Console.WriteLine("Contact updated successfully");
                 return;
+            }
         }
 
-        Console.WriteLine("Contact updated successfully");
-        ShowContact(contact);
+        Console.WriteLine("Contact not found");
     }
+
 
 
     //Method to display contact details
@@ -121,25 +85,55 @@ public class ContactUtilityImpl : IContactUtility
 
 
     //UC4:Method to delete existing contact
-    public Contacts DeleteContact(Contacts contact)
+    public int DeleteContact(Contacts[] contacts, int count)
     {
-        if (contact == null)
+        if (count == 0)
         {
-            Console.WriteLine("No contact available to delete");
-            return null;
+            Console.WriteLine("No contacts to delete");
+            return count;
         }
 
-        Console.WriteLine("Enter First Name to delete contact:");
+        Console.WriteLine("Enter First Name to delete:");
         string name = Console.ReadLine();
 
-        if (!contact.GetFirstName().Equals(name))
+        for (int i = 0; i < count; i++)
         {
-            Console.WriteLine("Contact not found");
-            return contact;
+            if (contacts[i].GetFirstName().Equals(name))
+            {
+                //shift elements to left
+                for (int j = i; j < count - 1; j++)
+                {
+                    contacts[j] = contacts[j + 1];
+                }
+
+                //delete last duplicate elements
+                contacts[count - 1] = null;
+                Console.WriteLine("Contact deleted successfully");
+                return count - 1;
+            }
         }
 
-        Console.WriteLine("Contact deleted successfully");
-        return null; 
+        Console.WriteLine("Contact not found");
+        return count;
+    }
+
+    //method to show multiple added contacts
+    public void ShowAllContacts(Contacts[] contacts, int count)
+    {
+        if (count == 0)
+        {
+            Console.WriteLine("No contacts available");
+            return;
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            Console.WriteLine("Name: " + contacts[i].GetFullName());
+            Console.WriteLine("Address: " + contacts[i].GetAddressDetails());
+            Console.WriteLine("Phone: " + contacts[i].GetPhoneNumber());
+            Console.WriteLine("Email: " + contacts[i].GetEmail());
+            Console.WriteLine();
+        }
     }
 
 
