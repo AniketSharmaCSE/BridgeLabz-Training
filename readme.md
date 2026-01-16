@@ -137,7 +137,7 @@ Common built-in functions
 
 String handling problems
 
-Built-in problems (Level 1 & Level 2)
+Built-in problems (Level 1 \& Level 2)
 
 📅 29 December 2025
 
@@ -147,7 +147,7 @@ Scenario-based problems:
 
 Snake and Ladder
 
-Sentence Formatter & Text Analyzer
+Sentence Formatter \& Text Analyzer
 
 Temperature Analyzer
 
@@ -322,3 +322,56 @@ Heap
 Counting
 
 Sorting-based problem solving
+
+📅 Date: 12 January 2025
+
+📘 Topic
+
+Solved One Scenario-Based Questions on OOPS Concept Metal Factory Pipe Cutting
+
+StringBuilder, StringBuffer
+
+InputStreamReader, FileReader
+
+Linear Search and Binary Search
+
+Solved Questions Based On StringBuilder, StringBuffer.
+
+📅 Date: 13 January 2025
+
+📘 Topic
+
+Solved Two Scenario-Based Questions on 1.Custom Furniture Manufacturing 2.LoanBuddy – Loan Approval Automation
+
+Solved Two Scenario-Based Questions on 1.CinemaTime – Movie Schedule Manager 2.BookBuddy – Digital Bookshelf App
+
+Solved Questions Based On InputStreamReader, FileReader, Linear Search and Binary Search.
+
+📅 Date: 14 January 2025
+
+📘 Topic
+
+What is Runtime Analysis?
+
+Understanding Big-O Notation
+
+Time Complexity Analysis
+
+Space Complexity Analysis
+
+Best, Worst, and Average Case Complexities
+
+Practical Guidelines for Optimizing C# Code
+
+Problem solved on Best, Worst, and Average Case Complexities.
+
+Solved One Project Based On Address Book Problem
+
+📅 Date: 15 January 2025
+
+📘 Topic
+
+Continue Solve Previous Project Based On Address Book Problem
+
+Solved One Scenario-Based Questions on BrowserBuddy – Tab History Manager (Doubly Linked List + Stack)
+
