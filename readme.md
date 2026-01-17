@@ -375,3 +375,11 @@ Continue Solve Previous Project Based On Address Book Problem
 
 Solved One Scenario-Based Questions on BrowserBuddy – Tab History Manager (Doubly Linked List + Stack)
 
+📅 Date: 16 January 2025
+
+📘 Topic
+
+Solved One Scenario-Based Questions on Traffic Manager And By Solve it using DSA Concepts,OOPS and Core c#.In DSA we use Circular Linked List,
+
+Solved One Scenario-Based Questions on Book Shelf And By Solve it using DSA Concepts,OOPS and Core c#. In DSA we use Linked List, HashMap.
+
