@@ -25,6 +25,7 @@ public class AddressBookMenu
             Console.WriteLine("1. Add Address Book");     
 			Console.WriteLine("2. Select Address Book");
 			Console.WriteLine("3. Search Person by City or State"); //UC8
+			Console.WriteLine("4. View Persons by City or State"); //UC9
 			Console.WriteLine("0. Exit");
 
             Console.WriteLine("Enter your choice:");
@@ -43,6 +44,10 @@ public class AddressBookMenu
 					
 				case 3:
 					contactUtility.SearchByCityOrState(addressBooks, addressBookCount);
+					break;
+					
+				case 4:
+					contactUtility.ViewPersonsByCityOrState(addressBooks, addressBookCount);
 					break;
 
                 case 0:
