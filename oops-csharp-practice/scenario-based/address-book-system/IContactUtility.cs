@@ -23,4 +23,8 @@
 
     //UC11
     void SortContactsByName(Contacts[] contacts, int count);
+
+	//UC12
+	void SortContactsByCityStateOrZip(Contacts[] contacts, int count);
+
 }

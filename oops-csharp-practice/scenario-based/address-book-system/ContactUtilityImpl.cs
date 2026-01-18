@@ -275,6 +275,40 @@ public class ContactUtilityImpl : IContactUtility
 		Console.WriteLine("Contacts sorted alphabetically by name");
 	}
 
+	//UC12:Sort contacts by city, state, or zip
+	public void SortContactsByCityStateOrZip(Contacts[] contacts, int count)
+	{
+		if (count < 2)
+		{
+			Console.WriteLine("Not enough contacts to sort");
+			return;
+		}
+
+		Console.WriteLine("Sort by:");
+		Console.WriteLine("1. City");
+		Console.WriteLine("2. State");
+		Console.WriteLine("3. Zip");
+		int choice = Convert.ToInt32(Console.ReadLine());
+
+		for (int i = 0; i < count - 1; i++)
+		{
+			for (int j = 0; j < count - i - 1; j++)
+			{
+				string a = contacts[j].GetAddressDetails();
+				string b = contacts[j + 1].GetAddressDetails();
+
+				if (string.Compare(a, b) > 0)
+				{
+					Contacts temp = contacts[j];
+					contacts[j] = contacts[j + 1];
+					contacts[j + 1] = temp;
+				}
+			}
+		}
+
+		Console.WriteLine("Contacts sorted successfully");
+	}
+
 
 }
 
