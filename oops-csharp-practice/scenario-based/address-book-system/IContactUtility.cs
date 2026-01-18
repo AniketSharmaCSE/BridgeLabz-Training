@@ -21,4 +21,6 @@
     //UC10
     void CountByCityOrState(AddressBook[] addressBooks, int bookCount);
 
+    //UC11
+    void SortContactsByName(Contacts[] contacts, int count);
 }

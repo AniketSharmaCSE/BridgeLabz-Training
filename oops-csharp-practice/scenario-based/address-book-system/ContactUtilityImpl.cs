@@ -248,6 +248,32 @@ public class ContactUtilityImpl : IContactUtility
 
 		Console.WriteLine("Total Persons: " + count);
 	}
+	
+	//UC11:Sort contacts alphabetically by name
+	public void SortContactsByName(Contacts[] contacts, int count)
+	{
+		if (count < 2)
+		{
+			Console.WriteLine("Not enough contacts to sort");
+			return;
+		}
+
+		for (int i = 0; i < count - 1; i++)
+		{
+			for (int j = 0; j < count - i - 1; j++)
+			{
+				if (contacts[j].GetFullName()
+					.CompareTo(contacts[j + 1].GetFullName()) > 0)
+				{
+					Contacts temp = contacts[j];
+					contacts[j] = contacts[j + 1];
+					contacts[j + 1] = temp;
+				}
+			}
+		}
+
+		Console.WriteLine("Contacts sorted alphabetically by name");
+	}
 
 
 }

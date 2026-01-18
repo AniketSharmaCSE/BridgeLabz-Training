@@ -144,6 +144,7 @@ public class AddressBookMenu
             Console.WriteLine("2. Edit Contact");     //UC3
             Console.WriteLine("3. Delete Contact");   //UC4
             Console.WriteLine("4. Show All Contacts");//UC5
+			Console.WriteLine("5. Sort Contacts by Name"); //UC11
             Console.WriteLine("0. Back");
             Console.WriteLine("Enter your choice:");
 
@@ -178,6 +179,10 @@ public class AddressBookMenu
                 case 4:
                     contactUtility.ShowAllContacts(book.contacts, book.contactCount);
                     break;
+				
+				case 5:
+					contactUtility.SortContactsByName(book.contacts, book.contactCount);
+					break;
 
                 case 0:
                     break;
