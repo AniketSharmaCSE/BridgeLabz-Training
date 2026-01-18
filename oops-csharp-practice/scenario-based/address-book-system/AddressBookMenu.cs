@@ -23,8 +23,10 @@ public class AddressBookMenu
         {
             Console.WriteLine();
             Console.WriteLine("1. Add Address Book");     
-            Console.WriteLine("2. Select Address Book");  
-            Console.WriteLine("0. Exit");
+			Console.WriteLine("2. Select Address Book");
+			Console.WriteLine("3. Search Person by City or State"); //UC8
+			Console.WriteLine("0. Exit");
+
             Console.WriteLine("Enter your choice:");
 
             choice = Convert.ToInt32(Console.ReadLine());
@@ -38,6 +40,10 @@ public class AddressBookMenu
                 case 2:
                     SelectAddressBook();
                     break;
+					
+				case 3:
+					contactUtility.SearchByCityOrState(addressBooks, addressBookCount);
+					break;
 
                 case 0:
                     Console.WriteLine("Exiting Address Book");

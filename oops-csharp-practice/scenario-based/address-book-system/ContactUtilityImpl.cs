@@ -130,4 +130,46 @@ public class ContactUtilityImpl : IContactUtility
             Console.WriteLine();
         }
     }
+	
+	 //UC8:Search contacts by city or state across address books
+    public void SearchByCityOrState(AddressBook[] addressBooks, int bookCount)
+    {
+        Console.WriteLine("Search by:");
+        Console.WriteLine("1. City");
+        Console.WriteLine("2. State");
+        int choice = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Enter search value:");
+        string value = Console.ReadLine();
+
+        bool found = false;
+
+        for (int i = 0; i < bookCount; i++)
+        {
+            AddressBook book = addressBooks[i];
+
+            for (int j = 0; j < book.contactCount; j++)
+            {
+                Contacts c = book.contacts[j];
+
+                if ((choice == 1 && c.GetAddressDetails().Contains(value)) ||
+                    (choice == 2 && c.GetAddressDetails().Contains(value)))
+                {
+                    Console.WriteLine("Address Book: " + book.bookName);
+                    Console.WriteLine("Name: " + c.GetFullName());
+                    Console.WriteLine("Address: " + c.GetAddressDetails());
+                    Console.WriteLine("Phone: " + c.GetPhoneNumber());
+                    Console.WriteLine("Email: " + c.GetEmail());
+                    Console.WriteLine();
+                    found = true;
+                }
+            }
+        }
+
+        if (!found)
+        {
+            Console.WriteLine("No matching contacts found");
+        }
+    }
 }
+
