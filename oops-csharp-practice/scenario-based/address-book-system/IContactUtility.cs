@@ -11,4 +11,14 @@
 
     //UC5
     void ShowAllContacts(Contacts[] contacts, int count);
+
+    //UC8
+    void SearchByCityOrState(AddressBook[] addressBooks, int bookCount);
+
+    //UC9
+    void ViewPersonsByCityOrState(AddressBook[] addressBooks, int bookCount);
+
+    //UC10
+    void CountByCityOrState(AddressBook[] addressBooks, int bookCount);
+
 }

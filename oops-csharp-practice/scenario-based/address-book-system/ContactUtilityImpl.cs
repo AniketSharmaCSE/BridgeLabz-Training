@@ -173,49 +173,82 @@ public class ContactUtilityImpl : IContactUtility
     }
 	
 	//UC9:View persons by city or state
-public void ViewPersonsByCityOrState(AddressBook[] addressBooks, int bookCount)
-{
-    Console.WriteLine("View by:");
-    Console.WriteLine("1. City");
-    Console.WriteLine("2. State");
-    int choice = Convert.ToInt32(Console.ReadLine());
+	public void ViewPersonsByCityOrState(AddressBook[] addressBooks, int bookCount)
+	{
+		Console.WriteLine("View by:");
+		Console.WriteLine("1. City");
+		Console.WriteLine("2. State");
+		int choice = Convert.ToInt32(Console.ReadLine());
 
-    Console.WriteLine("Enter value:");
-    string value = Console.ReadLine();
+		Console.WriteLine("Enter value:");
+		string value = Console.ReadLine();
 
-    bool found = false;
+		bool found = false;
 
-    for (int i = 0; i < bookCount; i++)
-    {
-        AddressBook book = addressBooks[i];
+		for (int i = 0; i < bookCount; i++)
+		{
+			AddressBook book = addressBooks[i];
 
-        for (int j = 0; j < book.contactCount; j++)
-        {
-            Contacts c = book.contacts[j];
-            string address = c.GetAddressDetails();
+			for (int j = 0; j < book.contactCount; j++)
+			{
+				Contacts c = book.contacts[j];
+				string address = c.GetAddressDetails();
 
-            if ((choice == 1 && address.Contains(value)) ||
-                (choice == 2 && address.Contains(value)))
-            {
-                if (!found)
-                {
-                    Console.WriteLine("Matching Persons:");
-                }
+				if ((choice == 1 && address.Contains(value)) ||
+					(choice == 2 && address.Contains(value)))
+				{
+					if (!found)
+					{
+						Console.WriteLine("Matching Persons:");
+					}
 
-                Console.WriteLine("Address Book: " + book.BookName);
-                Console.WriteLine("Name: " + c.GetFullName());
-                Console.WriteLine("Address: " + address);
-                Console.WriteLine();
-                found = true;
-            }
-        }
-    }
+					Console.WriteLine("Address Book: " + book.BookName);
+					Console.WriteLine("Name: " + c.GetFullName());
+					Console.WriteLine("Address: " + address);
+					Console.WriteLine();
+					found = true;
+				}
+			}
+		}
 
-    if (!found)
-    {
-        Console.WriteLine("No persons found for given value");
-    }
-}
+		if (!found)
+		{
+			Console.WriteLine("No persons found for given value");
+		}
+	}
+	
+		//UC10:Count persons by city or state
+	public void CountByCityOrState(AddressBook[] addressBooks, int bookCount)
+	{
+		Console.WriteLine("Count by:");
+		Console.WriteLine("1. City");
+		Console.WriteLine("2. State");
+		int choice = Convert.ToInt32(Console.ReadLine());
+
+		Console.WriteLine("Enter value:");
+		string value = Console.ReadLine();
+
+		int count = 0;
+
+		for (int i = 0; i < bookCount; i++)
+		{
+			AddressBook book = addressBooks[i];
+
+			for (int j = 0; j < book.contactCount; j++)
+			{
+				string address = book.contacts[j].GetAddressDetails();
+
+				if ((choice == 1 && address.Contains(value)) ||
+					(choice == 2 && address.Contains(value)))
+				{
+					count++;
+				}
+			}
+		}
+
+		Console.WriteLine("Total Persons: " + count);
+	}
+
 
 }
 
