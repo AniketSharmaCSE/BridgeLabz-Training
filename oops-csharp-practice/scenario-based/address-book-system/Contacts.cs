@@ -30,6 +30,17 @@ public class Contacts
         return firstName + " " + lastName;
     }
 
+    public string GetFirstName()
+    {
+        return firstName;
+    }
+
+    //UC7:Check duplicate contact by name
+    public bool IsSamePerson(string fName, string lName)
+    {
+        return firstName.Equals(fName) && lastName.Equals(lName);
+    }
+
     public string GetAddressDetails()
     {
         return address + ", " + city + ", " + state + " - " + zip;
@@ -43,11 +54,6 @@ public class Contacts
     public string GetEmail()
     {
         return email;
-    }
-
-    public string GetFirstName()
-    {
-        return firstName;
     }
 
     //UC3:Setter methods to edit
@@ -80,6 +86,4 @@ public class Contacts
     {
         this.email = email;
     }
-
-
 }

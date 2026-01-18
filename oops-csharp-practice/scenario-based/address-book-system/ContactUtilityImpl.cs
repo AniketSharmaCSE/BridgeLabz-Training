@@ -5,10 +5,28 @@ public class ContactUtilityImpl : IContactUtility
     //UC2:method to add contacts
     public Contacts AddContact()
     {
+        return AddContact(null, 0);
+    }
+
+    //UC7:Add contact with duplicate check
+    public Contacts AddContact(Contacts[] contacts, int count)
+    {
         Console.WriteLine("Enter First Name:");
         string firstName = Console.ReadLine();
+
         Console.WriteLine("Enter Last Name:");
         string lastName = Console.ReadLine();
+
+        //UC7:Duplicate check
+        for (int i = 0; i < count; i++)
+        {
+            if (contacts[i].IsSamePerson(firstName, lastName))
+            {
+                Console.WriteLine("Duplicate contact found. Contact not added");
+                return null;
+            }
+        }
+
         Console.WriteLine("Enter Address:");
         string address = Console.ReadLine();
         Console.WriteLine("Enter City:");
@@ -34,7 +52,6 @@ public class ContactUtilityImpl : IContactUtility
         );
 
         Console.WriteLine("Contact added successfully");
-
         return contact;
     }
 
@@ -64,26 +81,6 @@ public class ContactUtilityImpl : IContactUtility
         Console.WriteLine("Contact not found");
     }
 
-
-
-    //Method to display contact details
-    public void ShowContact(Contacts contact)
-    {
-        if (contact == null)
-        {
-            Console.WriteLine("No contact to display");
-            return;
-        }
-
-        Console.WriteLine("Contact Details: ");
-        Console.WriteLine("Name: " + contact.GetFullName());
-        Console.WriteLine("Address: " + contact.GetAddressDetails());
-        Console.WriteLine("Phone: " + contact.GetPhoneNumber());
-        Console.WriteLine("Email: " + contact.GetEmail());
-        Console.WriteLine();
-    }
-
-
     //UC4:Method to delete existing contact
     public int DeleteContact(Contacts[] contacts, int count)
     {
@@ -100,13 +97,11 @@ public class ContactUtilityImpl : IContactUtility
         {
             if (contacts[i].GetFirstName().Equals(name))
             {
-                //shift elements to left
                 for (int j = i; j < count - 1; j++)
                 {
                     contacts[j] = contacts[j + 1];
                 }
 
-                //delete last duplicate elements
                 contacts[count - 1] = null;
                 Console.WriteLine("Contact deleted successfully");
                 return count - 1;
@@ -117,7 +112,7 @@ public class ContactUtilityImpl : IContactUtility
         return count;
     }
 
-    //method to show multiple added contacts
+    //UC5:Show all contacts
     public void ShowAllContacts(Contacts[] contacts, int count)
     {
         if (count == 0)
@@ -135,7 +130,4 @@ public class ContactUtilityImpl : IContactUtility
             Console.WriteLine();
         }
     }
-
-
-
 }

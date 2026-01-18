@@ -136,16 +136,20 @@ public class AddressBookMenu
             switch (choice)
             {
                 case 1:
-                    if (book.contactCount < book.contacts.Length)
-                    {
-                        book.contacts[book.contactCount] = contactUtility.AddContact();
-                        book.contactCount++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Address Book is full");
-                    }
-                    break;
+					if (book.contactCount < book.contacts.Length)
+					{
+						Contacts contact = contactUtility.AddContact(book.contacts, book.contactCount);
+						if (contact != null)
+						{
+							book.contacts[book.contactCount] = contact;
+							book.contactCount++;
+						}
+					}
+					else
+					{
+						Console.WriteLine("Address Book is full");
+					}
+						break;
 
                 case 2:
                     contactUtility.EditContact(book.contacts, book.contactCount);
