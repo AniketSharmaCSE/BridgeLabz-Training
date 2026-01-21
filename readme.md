@@ -379,7 +379,37 @@ Solved One Scenario-Based Questions on BrowserBuddy – Tab History Manager (Dou
 
 📘 Topic
 
-Solved One Scenario-Based Questions on Traffic Manager And By Solve it using DSA Concepts,OOPS and Core c#.In DSA we use Circular Linked List,
+Solved one scenario-based question on Traffic Manager, implemented using DSA concepts, OOPS, and Core C#.
+Used a Circular Linked List as the primary DSA.
 
-Solved One Scenario-Based Questions on Book Shelf And By Solve it using DSA Concepts,OOPS and Core c#. In DSA we use Linked List, HashMap.
+Solved one scenario-based question on Book Shelf, implemented using DSA concepts, OOPS, and Core C#.
+Used Linked List and HashMap in DSA.
+
+📅 Date: 17 January 2025
+
+📘 Topic
+
+Solved one scenario-based question on FlashDealz – Product Sorting by Discount using Quick Sort.
+
+Solved one scenario-based question on FitnessTracker – Daily Step Count Ranking using Bubble Sort.
+
+📅 Date: 19 January 2025
+
+📘 Topic
+
+Solved one scenario-based question on ParcelTracker – Delivery Chain Management using a Singly Linked List.
+
+Solved one scenario-based question on ExamProctor – Online Exam Review System using Stack, HashMap, and Functions.
+
+Completed C# Generics.
+
+📅 Date: 20 January 2025
+
+📘 Topic
+
+Solved questions related to Generics.
+
+Solved one scenario-based question on Sorting Aadhar Numbers using Radix Sort.
+
+Solved one scenario-based question on Password Cracker Simulator using Backtracking.
 
