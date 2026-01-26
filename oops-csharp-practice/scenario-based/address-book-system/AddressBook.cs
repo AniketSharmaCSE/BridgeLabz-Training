@@ -1,13 +1,16 @@
+using System.Collections.Generic;
+
 public class AddressBook
 {
+    //UC6:Each Address Book has unique name
     public string BookName;
-    public Contacts[] contacts;
-    public int contactCount;
+
+    //UC5 + UC6:Collection of contacts
+    public List<Contacts> contacts;
 
     public AddressBook(string bookName)
     {
         BookName = bookName;
-        contacts = new Contacts[100];
-        contactCount = 0;
+        contacts = new List<Contacts>();
     }
 }

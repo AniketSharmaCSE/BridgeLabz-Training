@@ -1,15 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 
 public class ContactUtilityImpl : IContactUtility
 {
-    //UC2:method to add contacts
-    public Contacts AddContact()
-    {
-        return AddContact(null, 0);
-    }
-
-    //UC7:Add contact with duplicate check
-    public Contacts AddContact(Contacts[] contacts, int count)
+    //UC2 + UC7:Add contact with duplicate check
+    public Contacts AddContact(List<Contacts> contacts)
     {
         Console.WriteLine("Enter First Name:");
         string firstName = Console.ReadLine();
@@ -17,12 +12,12 @@ public class ContactUtilityImpl : IContactUtility
         Console.WriteLine("Enter Last Name:");
         string lastName = Console.ReadLine();
 
-        //UC7:Duplicate check
-        for (int i = 0; i < count; i++)
+        //UC7:Duplicate check within same Address Book
+        foreach (Contacts c in contacts)
         {
-            if (contacts[i].IsSamePerson(firstName, lastName))
+            if (c.IsSamePerson(firstName, lastName))
             {
-                Console.WriteLine("Duplicate contact found. Contact not added");
+                Console.WriteLine("Duplicate contact found");
                 return null;
             }
         }
@@ -36,44 +31,27 @@ public class ContactUtilityImpl : IContactUtility
         Console.WriteLine("Enter Zip:");
         string zip = Console.ReadLine();
         Console.WriteLine("Enter Phone Number:");
-        string phoneNumber = Console.ReadLine();
+        string phone = Console.ReadLine();
         Console.WriteLine("Enter Email:");
         string email = Console.ReadLine();
 
-        Contacts contact = new Contacts(
-            firstName,
-            lastName,
-            address,
-            city,
-            state,
-            zip,
-            phoneNumber,
-            email
-        );
-
         Console.WriteLine("Contact added successfully");
-        return contact;
+        return new Contacts(firstName, lastName, address, city, state, zip, phone, email);
     }
 
-    //UC3:Method to edit existing contact
-    public void EditContact(Contacts[] contacts, int count)
+    //UC3:Edit existing contact
+    public void EditContact(List<Contacts> contacts)
     {
-        if (count == 0)
-        {
-            Console.WriteLine("No contacts available");
-            return;
-        }
-
         Console.WriteLine("Enter First Name to edit:");
         string name = Console.ReadLine();
 
-        for (int i = 0; i < count; i++)
+        foreach (Contacts c in contacts)
         {
-            if (contacts[i].GetFirstName().Equals(name))
+            if (c.GetFirstName().Equals(name))
             {
                 Console.WriteLine("Enter new City:");
-                contacts[i].SetCity(Console.ReadLine());
-                Console.WriteLine("Contact updated successfully");
+                c.SetCity(Console.ReadLine());
+                Console.WriteLine("Contact updated");
                 return;
             }
         }
@@ -81,234 +59,91 @@ public class ContactUtilityImpl : IContactUtility
         Console.WriteLine("Contact not found");
     }
 
-    //UC4:Method to delete existing contact
-    public int DeleteContact(Contacts[] contacts, int count)
+    //UC4:Delete contact
+    public void DeleteContact(List<Contacts> contacts)
     {
-        if (count == 0)
-        {
-            Console.WriteLine("No contacts to delete");
-            return count;
-        }
-
         Console.WriteLine("Enter First Name to delete:");
         string name = Console.ReadLine();
 
-        for (int i = 0; i < count; i++)
-        {
-            if (contacts[i].GetFirstName().Equals(name))
-            {
-                for (int j = i; j < count - 1; j++)
-                {
-                    contacts[j] = contacts[j + 1];
-                }
-
-                contacts[count - 1] = null;
-                Console.WriteLine("Contact deleted successfully");
-                return count - 1;
-            }
-        }
-
-        Console.WriteLine("Contact not found");
-        return count;
+        contacts.RemoveAll(c => c.GetFirstName().Equals(name));
+        Console.WriteLine("Delete operation completed");
     }
 
     //UC5:Show all contacts
-    public void ShowAllContacts(Contacts[] contacts, int count)
+    public void ShowAllContacts(List<Contacts> contacts)
     {
-        if (count == 0)
+        if (contacts.Count == 0)
         {
             Console.WriteLine("No contacts available");
             return;
         }
 
-        for (int i = 0; i < count; i++)
+        foreach (Contacts c in contacts)
         {
-            Console.WriteLine("Name: " + contacts[i].GetFullName());
-            Console.WriteLine("Address: " + contacts[i].GetAddressDetails());
-            Console.WriteLine("Phone: " + contacts[i].GetPhoneNumber());
-            Console.WriteLine("Email: " + contacts[i].GetEmail());
+            Console.WriteLine("Name: " + c.GetFullName());
+            Console.WriteLine("Address: " + c.GetAddressDetails());
+            Console.WriteLine("Phone: " + c.GetPhoneNumber());
+            Console.WriteLine("Email: " + c.GetEmail());
             Console.WriteLine();
         }
     }
-	
-	 //UC8:Search contacts by city or state across address books
-    public void SearchByCityOrState(AddressBook[] addressBooks, int bookCount)
-    {
-        Console.WriteLine("Search by:");
-        Console.WriteLine("1. City");
-        Console.WriteLine("2. State");
-        int choice = Convert.ToInt32(Console.ReadLine());
 
-        Console.WriteLine("Enter search value:");
+    //UC8:Search contacts by city or state
+    public void SearchByCityOrState(Dictionary<string, AddressBook> addressBooks)
+    {
+        Console.WriteLine("Enter City or State:");
         string value = Console.ReadLine();
 
-        bool found = false;
-
-        for (int i = 0; i < bookCount; i++)
+        foreach (AddressBook book in addressBooks.Values)
         {
-            AddressBook book = addressBooks[i];
-
-            for (int j = 0; j < book.contactCount; j++)
+            foreach (Contacts c in book.contacts)
             {
-                Contacts c = book.contacts[j];
-
-                if ((choice == 1 && c.GetAddressDetails().Contains(value)) ||
-                    (choice == 2 && c.GetAddressDetails().Contains(value)))
+                if (c.GetAddressDetails().Contains(value))
                 {
-                    Console.WriteLine("Address Book: " + book.bookName);
-                    Console.WriteLine("Name: " + c.GetFullName());
-                    Console.WriteLine("Address: " + c.GetAddressDetails());
-                    Console.WriteLine("Phone: " + c.GetPhoneNumber());
-                    Console.WriteLine("Email: " + c.GetEmail());
-                    Console.WriteLine();
-                    found = true;
+                    Console.WriteLine(c.GetFullName() + " (" + book.BookName + ")");
+                }
+            }
+        }
+    }
+
+    //UC9:View persons by city or state
+    public void ViewPersonsByCityOrState(Dictionary<string, AddressBook> addressBooks)
+    {
+        SearchByCityOrState(addressBooks);
+    }
+
+    //UC10:Count persons by city or state
+    public void CountByCityOrState(Dictionary<string, AddressBook> addressBooks)
+    {
+        Console.WriteLine("Enter City or State:");
+        string value = Console.ReadLine();
+        int count = 0;
+
+        foreach (AddressBook book in addressBooks.Values)
+        {
+            foreach (Contacts c in book.contacts)
+            {
+                if (c.GetAddressDetails().Contains(value))
+                {
+                    count++;
                 }
             }
         }
 
-        if (!found)
-        {
-            Console.WriteLine("No matching contacts found");
-        }
+        Console.WriteLine("Total Persons: " + count);
     }
-	
-	//UC9:View persons by city or state
-	public void ViewPersonsByCityOrState(AddressBook[] addressBooks, int bookCount)
-	{
-		Console.WriteLine("View by:");
-		Console.WriteLine("1. City");
-		Console.WriteLine("2. State");
-		int choice = Convert.ToInt32(Console.ReadLine());
 
-		Console.WriteLine("Enter value:");
-		string value = Console.ReadLine();
+    //UC11:Sort contacts alphabetically by name
+    public void SortContactsByName(List<Contacts> contacts)
+    {
+        contacts.Sort((a, b) => a.GetFullName().CompareTo(b.GetFullName()));
+        Console.WriteLine("Contacts sorted by name");
+    }
 
-		bool found = false;
-
-		for (int i = 0; i < bookCount; i++)
-		{
-			AddressBook book = addressBooks[i];
-
-			for (int j = 0; j < book.contactCount; j++)
-			{
-				Contacts c = book.contacts[j];
-				string address = c.GetAddressDetails();
-
-				if ((choice == 1 && address.Contains(value)) ||
-					(choice == 2 && address.Contains(value)))
-				{
-					if (!found)
-					{
-						Console.WriteLine("Matching Persons:");
-					}
-
-					Console.WriteLine("Address Book: " + book.BookName);
-					Console.WriteLine("Name: " + c.GetFullName());
-					Console.WriteLine("Address: " + address);
-					Console.WriteLine();
-					found = true;
-				}
-			}
-		}
-
-		if (!found)
-		{
-			Console.WriteLine("No persons found for given value");
-		}
-	}
-	
-		//UC10:Count persons by city or state
-	public void CountByCityOrState(AddressBook[] addressBooks, int bookCount)
-	{
-		Console.WriteLine("Count by:");
-		Console.WriteLine("1. City");
-		Console.WriteLine("2. State");
-		int choice = Convert.ToInt32(Console.ReadLine());
-
-		Console.WriteLine("Enter value:");
-		string value = Console.ReadLine();
-
-		int count = 0;
-
-		for (int i = 0; i < bookCount; i++)
-		{
-			AddressBook book = addressBooks[i];
-
-			for (int j = 0; j < book.contactCount; j++)
-			{
-				string address = book.contacts[j].GetAddressDetails();
-
-				if ((choice == 1 && address.Contains(value)) ||
-					(choice == 2 && address.Contains(value)))
-				{
-					count++;
-				}
-			}
-		}
-
-		Console.WriteLine("Total Persons: " + count);
-	}
-	
-	//UC11:Sort contacts alphabetically by name
-	public void SortContactsByName(Contacts[] contacts, int count)
-	{
-		if (count < 2)
-		{
-			Console.WriteLine("Not enough contacts to sort");
-			return;
-		}
-
-		for (int i = 0; i < count - 1; i++)
-		{
-			for (int j = 0; j < count - i - 1; j++)
-			{
-				if (contacts[j].GetFullName()
-					.CompareTo(contacts[j + 1].GetFullName()) > 0)
-				{
-					Contacts temp = contacts[j];
-					contacts[j] = contacts[j + 1];
-					contacts[j + 1] = temp;
-				}
-			}
-		}
-
-		Console.WriteLine("Contacts sorted alphabetically by name");
-	}
-
-	//UC12:Sort contacts by city, state, or zip
-	public void SortContactsByCityStateOrZip(Contacts[] contacts, int count)
-	{
-		if (count < 2)
-		{
-			Console.WriteLine("Not enough contacts to sort");
-			return;
-		}
-
-		Console.WriteLine("Sort by:");
-		Console.WriteLine("1. City");
-		Console.WriteLine("2. State");
-		Console.WriteLine("3. Zip");
-		int choice = Convert.ToInt32(Console.ReadLine());
-
-		for (int i = 0; i < count - 1; i++)
-		{
-			for (int j = 0; j < count - i - 1; j++)
-			{
-				string a = contacts[j].GetAddressDetails();
-				string b = contacts[j + 1].GetAddressDetails();
-
-				if (string.Compare(a, b) > 0)
-				{
-					Contacts temp = contacts[j];
-					contacts[j] = contacts[j + 1];
-					contacts[j + 1] = temp;
-				}
-			}
-		}
-
-		Console.WriteLine("Contacts sorted successfully");
-	}
-
-
+    //UC12:Sort contacts by city/state/zip
+    public void SortContactsByCityStateOrZip(List<Contacts> contacts)
+    {
+        contacts.Sort((a, b) => a.GetAddressDetails().CompareTo(b.GetAddressDetails()));
+        Console.WriteLine("Contacts sorted by address");
+    }
 }
-

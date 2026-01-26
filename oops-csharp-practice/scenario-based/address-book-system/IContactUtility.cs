@@ -1,30 +1,31 @@
-﻿public interface IContactUtility
+﻿using System.Collections.Generic;
+
+public interface IContactUtility
 {
     //UC2
-    Contacts AddContact();
+    Contacts AddContact(List<Contacts> contacts);
 
     //UC3
-    void EditContact(Contacts[] contacts, int count);
+    void EditContact(List<Contacts> contacts);
 
     //UC4
-    int DeleteContact(Contacts[] contacts, int count);
+    void DeleteContact(List<Contacts> contacts);
 
     //UC5
-    void ShowAllContacts(Contacts[] contacts, int count);
+    void ShowAllContacts(List<Contacts> contacts);
 
     //UC8
-    void SearchByCityOrState(AddressBook[] addressBooks, int bookCount);
+    void SearchByCityOrState(Dictionary<string, AddressBook> addressBooks);
 
     //UC9
-    void ViewPersonsByCityOrState(AddressBook[] addressBooks, int bookCount);
+    void ViewPersonsByCityOrState(Dictionary<string, AddressBook> addressBooks);
 
     //UC10
-    void CountByCityOrState(AddressBook[] addressBooks, int bookCount);
+    void CountByCityOrState(Dictionary<string, AddressBook> addressBooks);
 
     //UC11
-    void SortContactsByName(Contacts[] contacts, int count);
+    void SortContactsByName(List<Contacts> contacts);
 
-	//UC12
-	void SortContactsByCityStateOrZip(Contacts[] contacts, int count);
-
+    //UC12
+    void SortContactsByCityStateOrZip(List<Contacts> contacts);
 }
