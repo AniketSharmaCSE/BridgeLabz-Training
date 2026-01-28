@@ -35,6 +35,22 @@ public class Contacts
         return firstName;
     }
 
+    public string GetCity()
+    {
+       return city;
+    }
+
+    public string GetState()
+    {
+        return state;
+    }
+
+    public string GetZip()
+    {
+        return zip;
+    }
+
+
     //UC7:Check duplicate contact by name
     public bool IsSamePerson(string fName, string lName)
     {

@@ -12,13 +12,17 @@ public class ContactUtilityImpl : IContactUtility
         Console.WriteLine("Enter Last Name:");
         string lastName = Console.ReadLine();
 
+        if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
+        {
+            throw new EmptyInputException("First name or last name cannot be empty");
+        }
+
         //UC7:Duplicate check within same Address Book
         foreach (Contacts c in contacts)
         {
             if (c.IsSamePerson(firstName, lastName))
             {
-                Console.WriteLine("Duplicate contact found");
-                return null;
+                throw new DuplicateContactException("Duplicate contact found");
             }
         }
 
@@ -32,6 +36,11 @@ public class ContactUtilityImpl : IContactUtility
         string zip = Console.ReadLine();
         Console.WriteLine("Enter Phone Number:");
         string phone = Console.ReadLine();
+        if (phone.Length < 10 || phone.Length>10)
+        {
+            throw new InvalidPhoneNumberException("Phone number is not valid");
+        }
+
         Console.WriteLine("Enter Email:");
         string email = Console.ReadLine();
 
@@ -49,14 +58,77 @@ public class ContactUtilityImpl : IContactUtility
         {
             if (c.GetFirstName().Equals(name))
             {
-                Console.WriteLine("Enter new City:");
-                c.SetCity(Console.ReadLine());
-                Console.WriteLine("Contact updated");
+                int choice = 0;
+
+                do
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("What do you want to edit?");
+                    Console.WriteLine("1. Address");
+                    Console.WriteLine("2. City");
+                    Console.WriteLine("3. State");
+                    Console.WriteLine("4. Zip");
+                    Console.WriteLine("5. Phone Number");
+                    Console.WriteLine("6. Email");
+                    Console.WriteLine("0. Exit Edit Menu");
+
+                    Console.WriteLine("Enter your choice:");
+                    choice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine("Enter new Address:");
+                            c.SetAddress(Console.ReadLine());
+                            Console.WriteLine("Address updated");
+                            break;
+
+                        case 2:
+                            Console.WriteLine("Enter new City:");
+                            c.SetCity(Console.ReadLine());
+                            Console.WriteLine("City updated");
+                            break;
+
+                        case 3:
+                            Console.WriteLine("Enter new State:");
+                            c.SetState(Console.ReadLine());
+                            Console.WriteLine("State updated");
+                            break;
+
+                        case 4:
+                            Console.WriteLine("Enter new Zip:");
+                            c.SetZip(Console.ReadLine());
+                            Console.WriteLine("Zip updated");
+                            break;
+
+                        case 5:
+                            Console.WriteLine("Enter new Phone Number:");
+                            c.SetPhoneNumber(Console.ReadLine());
+                            Console.WriteLine("Phone Number updated");
+                            break;
+
+                        case 6:
+                            Console.WriteLine("Enter new Email:");
+                            c.SetEmail(Console.ReadLine());
+                            Console.WriteLine("Email updated");
+                            break;
+
+                        case 0:
+                            Console.WriteLine("Exiting edit menu...");
+                            break;
+
+                        default:
+                            Console.WriteLine("Invalid choice");
+                            break;
+                    }
+
+                } while (choice != 0);
+
                 return;
             }
         }
 
-        Console.WriteLine("Contact not found");
+        throw new ContactNotFoundException("Contact not found");
     }
 
     //UC4:Delete contact
@@ -65,8 +137,14 @@ public class ContactUtilityImpl : IContactUtility
         Console.WriteLine("Enter First Name to delete:");
         string name = Console.ReadLine();
 
-        contacts.RemoveAll(c => c.GetFirstName().Equals(name));
-        Console.WriteLine("Delete operation completed");
+        int removed = contacts.RemoveAll(c => c.GetFirstName().Equals(name));
+
+        if (removed == 0)
+        {
+            throw new ContactNotFoundException("Contact not found");
+        }
+
+        Console.WriteLine("Contact deleted successfully");
     }
 
     //UC5:Show all contacts
@@ -109,7 +187,61 @@ public class ContactUtilityImpl : IContactUtility
     //UC9:View persons by city or state
     public void ViewPersonsByCityOrState(Dictionary<string, AddressBook> addressBooks)
     {
-        SearchByCityOrState(addressBooks);
+        Console.WriteLine("View by:");
+        Console.WriteLine("1. City");
+        Console.WriteLine("2. State");
+        Console.WriteLine("Enter your choice:");
+        int choice = Convert.ToInt32(Console.ReadLine());
+
+        Dictionary<string, List<Contacts>> map = new Dictionary<string, List<Contacts>>();
+
+        foreach (AddressBook book in addressBooks.Values)
+        {
+            foreach (Contacts c in book.contacts)
+            {
+                string key = "";
+
+                string[] parts = c.GetAddressDetails().Split(',');
+
+                if (choice == 1)
+                {
+                    key = parts[1].Trim(); //City
+                }
+                else if (choice == 2)
+                {
+                    key = parts[2].Trim().Split('-')[0].Trim(); //State
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice");
+                    return;
+                }
+
+                if (!map.ContainsKey(key))
+                {
+                    map.Add(key, new List<Contacts>());
+                }
+
+                map[key].Add(c);
+            }
+        }
+
+        if (map.Count == 0)
+        {
+            Console.WriteLine("No contacts found");
+            return;
+        }
+
+        foreach (var item in map)
+        {
+            Console.WriteLine();
+            Console.WriteLine(item.Key + " :");
+
+            foreach (Contacts c in item.Value)
+            {
+                Console.WriteLine("  " + c.GetFullName());
+            }
+        }
     }
 
     //UC10:Count persons by city or state
@@ -143,7 +275,31 @@ public class ContactUtilityImpl : IContactUtility
     //UC12:Sort contacts by city/state/zip
     public void SortContactsByCityStateOrZip(List<Contacts> contacts)
     {
-        contacts.Sort((a, b) => a.GetAddressDetails().CompareTo(b.GetAddressDetails()));
-        Console.WriteLine("Contacts sorted by address");
+        Console.WriteLine("Sort by:");
+        Console.WriteLine("1. City");
+        Console.WriteLine("2. State");
+        Console.WriteLine("3. Zip");
+        Console.WriteLine("Enter your choice:");
+        int choice = Convert.ToInt32(Console.ReadLine());
+
+        if (choice == 1)
+        {
+            contacts.Sort((a, b) => a.GetCity().CompareTo(b.GetCity()));
+            Console.WriteLine("Contacts sorted by City");
+        }
+        else if (choice == 2)
+        {
+            contacts.Sort((a, b) => a.GetState().CompareTo(b.GetState()));
+            Console.WriteLine("Contacts sorted by State");
+        }
+        else if (choice == 3)
+        {
+            contacts.Sort((a, b) => a.GetZip().CompareTo(b.GetZip()));
+            Console.WriteLine("Contacts sorted by Zip");
+        }
+        else
+        {
+            Console.WriteLine("Invalid choice");
+        }
     }
 }

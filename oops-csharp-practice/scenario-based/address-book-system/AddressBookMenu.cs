@@ -29,29 +29,48 @@ public class AddressBookMenu
             Console.WriteLine("0. Exit");
 
             Console.WriteLine("Enter your choice:");
-            choice = Convert.ToInt32(Console.ReadLine());
 
-            switch (choice)
+            try
             {
-                case 1:
-                    AddAddressBook(); //UC6
-                    break;
+                choice = Convert.ToInt32(Console.ReadLine());
 
-                case 2:
-                    SelectAddressBook(); //UC6
-                    break;
+                switch (choice)
+                {
+                    case 1:
+                        AddAddressBook(); //UC6
+                        break;
 
-                case 3:
-                    contactUtility.SearchByCityOrState(addressBooks); //UC8
-                    break;
+                    case 2:
+                        SelectAddressBook(); //UC6
+                        break;
 
-                case 4:
-                    contactUtility.ViewPersonsByCityOrState(addressBooks); //UC9
-                    break;
+                    case 3:
+                        contactUtility.SearchByCityOrState(addressBooks); //UC8
+                        break;
 
-                case 5:
-                    contactUtility.CountByCityOrState(addressBooks); //UC10
-                    break;
+                    case 4:
+                        contactUtility.ViewPersonsByCityOrState(addressBooks); //UC9
+                        break;
+
+                    case 5:
+                        contactUtility.CountByCityOrState(addressBooks); //UC10
+                        break;
+
+                    case 0:
+                        Console.WriteLine("Exiting...");
+                        break;
+
+                    default:
+                        throw new InvalidChoiceException("Invalid menu choice");
+                }
+            }
+            catch (InvalidChoiceException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
             }
 
         } while (choice != 0);
@@ -62,6 +81,11 @@ public class AddressBookMenu
     {
         Console.WriteLine("Enter Address Book Name:");
         string name = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new EmptyInputException("Address Book name cannot be empty");
+        }
 
         if (addressBooks.ContainsKey(name))
         {
@@ -81,8 +105,7 @@ public class AddressBookMenu
 
         if (!addressBooks.ContainsKey(name))
         {
-            Console.WriteLine("Address Book not found");
-            return;
+            throw new AddressBookNotFoundException("Address Book not found");
         }
 
         OpenAddressBook(addressBooks[name]);
@@ -106,37 +129,85 @@ public class AddressBookMenu
             Console.WriteLine("0. Back");
 
             Console.WriteLine("Enter your choice:");
-            choice = Convert.ToInt32(Console.ReadLine());
 
-            switch (choice)
+            try
             {
-                case 1:
-                    Contacts c = contactUtility.AddContact(book.contacts);
-                    if (c != null)
-                    {
-                        book.contacts.Add(c);
-                    }
-                    break;
+                choice = Convert.ToInt32(Console.ReadLine());
 
-                case 2:
-                    contactUtility.EditContact(book.contacts);
-                    break;
+                switch (choice)
+                {
+                    case 1:
+                        try
+                        {
+                            Contacts c = contactUtility.AddContact(book.contacts);
+                            if (c != null)
+                            {
+                                book.contacts.Add(c);
+                            }
+                        }
+                        catch (DuplicateContactException ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        catch (EmptyInputException ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        catch (InvalidPhoneNumberException ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        break;
 
-                case 3:
-                    contactUtility.DeleteContact(book.contacts);
-                    break;
+                    case 2:
+                        try
+                        {
+                            contactUtility.EditContact(book.contacts);
+                        }
+                        catch (ContactNotFoundException ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        break;
 
-                case 4:
-                    contactUtility.ShowAllContacts(book.contacts);
-                    break;
+                    case 3:
+                        try
+                        {
+                            contactUtility.DeleteContact(book.contacts);
+                        }
+                        catch (ContactNotFoundException ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        break;
 
-                case 5:
-                    contactUtility.SortContactsByName(book.contacts);
-                    break;
+                    case 4:
+                        contactUtility.ShowAllContacts(book.contacts);
+                        break;
 
-                case 6:
-                    contactUtility.SortContactsByCityStateOrZip(book.contacts);
-                    break;
+                    case 5:
+                        contactUtility.SortContactsByName(book.contacts);
+                        break;
+
+                    case 6:
+                        contactUtility.SortContactsByCityStateOrZip(book.contacts);
+                        break;
+
+                    case 0:
+                        Console.WriteLine("Going back...");
+                        break;
+
+                    default:
+                        throw new InvalidChoiceException("Invalid menu choice");
+                }
+            }
+            catch (InvalidChoiceException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
             }
 
         } while (choice != 0);
