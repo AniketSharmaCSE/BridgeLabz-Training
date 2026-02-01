@@ -130,6 +130,8 @@ public class AddressBookMenu
             Console.WriteLine("8. Load Contacts from File"); //UC13
             Console.WriteLine("9. Save Contacts to CSV");  //UC14
             Console.WriteLine("10. Load Contacts from CSV"); //UC14
+            Console.WriteLine("11. Save Contacts to JSON"); //UC15
+            Console.WriteLine("12. Load Contacts from JSON"); //UC15
             Console.WriteLine("0. Back");
 
 
@@ -222,9 +224,21 @@ public class AddressBookMenu
                         contactUtility.LoadFromCsv(book.contacts, csvLoadPath);
                         break;
 
+                    case 11:
+                        Console.WriteLine("Enter JSON file path:");
+                        string jsonSavePath = Console.ReadLine();
+                        contactUtility.SaveToJson(book.contacts, jsonSavePath);
+                        break;
+
+                    case 12:
+                        Console.WriteLine("Enter JSON file path:");
+                        string jsonLoadPath = Console.ReadLine();
+                        contactUtility.LoadFromJson(book.contacts, jsonLoadPath);
+                        break;
+
 
                     case 0:
-                        Console.WriteLine("Going back...");
+                        Console.WriteLine("Going back");
                         break;
 
                     default:

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json;
+
 
 public class ContactUtilityImpl : IContactUtility
 {
@@ -407,6 +409,40 @@ public void LoadFromCsv(List<Contacts> contacts, string filePath)
 
     Console.WriteLine("Contacts loaded from CSV file successfully");
 }
+
+//UC15:Save contacts to JSON file
+public void SaveToJson(List<Contacts> contacts, string filePath)
+{
+    string jsonString = JsonSerializer.Serialize(contacts);
+    File.WriteAllText(filePath, jsonString);
+    Console.WriteLine("Contacts saved to JSON file successfully");
+}
+
+//UC15:Load contacts from JSON file
+public void LoadFromJson(List<Contacts> contacts, string filePath)
+{
+    if (!File.Exists(filePath))
+    {
+        Console.WriteLine("JSON file not found");
+        return;
+    }
+
+    string jsonString = File.ReadAllText(filePath);
+    List<Contacts> loadedContacts = JsonSerializer.Deserialize<List<Contacts>>(jsonString);
+
+    contacts.Clear();
+
+    if (loadedContacts != null)
+    {
+        foreach (Contacts c in loadedContacts)
+        {
+            contacts.Add(c);
+        }
+    }
+
+    Console.WriteLine("Contacts loaded from JSON file successfully");
+}
+
 
 
 

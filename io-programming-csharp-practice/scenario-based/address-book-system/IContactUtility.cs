@@ -36,4 +36,9 @@ public interface IContactUtility
      //UC14
     void SaveToCsv(List<Contacts> contacts, string filePath);
     void LoadFromCsv(List<Contacts> contacts, string filePath);
+
+    //UC15
+    void SaveToJson(List<Contacts> contacts, string filePath);
+    void LoadFromJson(List<Contacts> contacts, string filePath);
+
 }
