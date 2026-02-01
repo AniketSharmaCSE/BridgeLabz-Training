@@ -343,5 +343,71 @@ public class ContactUtilityImpl : IContactUtility
     Console.WriteLine("Contacts loaded from file successfully");
 }
 
+//UC14: Save contacts to CSV file
+public void SaveToCsv(List<Contacts> contacts, string filePath)
+{
+    using (StreamWriter writer = new StreamWriter(filePath))
+    {
+        //Header row
+        writer.WriteLine("FirstName,LastName,Address,City,State,Zip,Phone,Email");
+
+        foreach (Contacts c in contacts)
+        {
+            string line =
+                c.GetFullName().Split(' ')[0] + "," +
+                c.GetFullName().Split(' ')[1] + "," +
+                c.GetAddressDetails().Split(',')[0] + "," +
+                c.GetCity() + "," +
+                c.GetState() + "," +
+                c.GetZip() + "," +
+                c.GetPhoneNumber() + "," +
+                c.GetEmail();
+
+            writer.WriteLine(line);
+        }
+    }
+
+    Console.WriteLine("Contacts saved to CSV file successfully");
+}
+
+//UC14:Load contacts from CSV file
+public void LoadFromCsv(List<Contacts> contacts, string filePath)
+{
+    if (!File.Exists(filePath))
+    {
+        Console.WriteLine("CSV file not found");
+        return;
+    }
+
+    contacts.Clear();
+
+    using (StreamReader reader = new StreamReader(filePath))
+    {
+        string line;
+        reader.ReadLine();
+
+        while ((line = reader.ReadLine()) != null)
+        {
+            string[] parts = line.Split(',');
+
+            Contacts c = new Contacts(
+                parts[0],
+                parts[1],
+                parts[2],
+                parts[3],
+                parts[4],
+                parts[5],
+                parts[6],
+                parts[7]
+            );
+
+            contacts.Add(c);
+        }
+    }
+
+    Console.WriteLine("Contacts loaded from CSV file successfully");
+}
+
+
 
 }

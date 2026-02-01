@@ -33,4 +33,7 @@ public interface IContactUtility
     void SaveToFile(List<Contacts> contacts, string filePath);
     void LoadFromFile(List<Contacts> contacts, string filePath);
 
+     //UC14
+    void SaveToCsv(List<Contacts> contacts, string filePath);
+    void LoadFromCsv(List<Contacts> contacts, string filePath);
 }

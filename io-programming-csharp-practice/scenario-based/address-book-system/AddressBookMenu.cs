@@ -128,7 +128,10 @@ public class AddressBookMenu
             Console.WriteLine("6. Sort Contacts by City/State/Zip"); //UC12
             Console.WriteLine("7. Save Contacts to File"); //UC13
             Console.WriteLine("8. Load Contacts from File"); //UC13
+            Console.WriteLine("9. Save Contacts to CSV");  //UC14
+            Console.WriteLine("10. Load Contacts from CSV"); //UC14
             Console.WriteLine("0. Back");
+
 
             Console.WriteLine("Enter your choice:");
 
@@ -205,6 +208,18 @@ public class AddressBookMenu
                         Console.WriteLine("Enter file path:");
                         string loadPath = Console.ReadLine();
                         contactUtility.LoadFromFile(book.contacts, loadPath);
+                        break;
+
+                    case 9:
+                        Console.WriteLine("Enter CSV file path:");
+                        string csvSavePath = Console.ReadLine();
+                        contactUtility.SaveToCsv(book.contacts, csvSavePath);
+                        break;
+
+                    case 10:
+                        Console.WriteLine("Enter CSV file path:");
+                        string csvLoadPath = Console.ReadLine();
+                        contactUtility.LoadFromCsv(book.contacts, csvLoadPath);
                         break;
 
 
