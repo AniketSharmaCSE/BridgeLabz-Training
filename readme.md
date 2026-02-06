@@ -413,3 +413,170 @@ Solved one scenario-based question on Sorting Aadhar Numbers using Radix Sort.
 
 Solved one scenario-based question on Password Cracker Simulator using Backtracking.
 
+📅 Date: 21 January 2026
+
+📘 Topic
+
+Solved One Scenario-Based Questions on EduResults – Rank Sheet Generator (Merge Sort)
+
+Solved One Scenario-Based Questions on SmartCheckout – Supermarket Billing Queue (Queue + HashMap)
+
+Set Interface and Implementing Classes
+
+Queue and Deque Interfaces
+
+Map Interface and Its Implementations
+
+Comparison of Different Implementations
+
+Real-World Use Cases and Best Practices.
+
+📅 Date: 22 January 2026
+
+📘 Topic
+
+Solved One Scenario-Based Questions on AmbulanceRoute – Emergency Patient Navigation (Circular Linked List)
+
+C# I/O Streams
+
+Types of Streams
+
+File Streams
+
+Object Streams
+
+ByteArray Streams
+
+Buffered Streams
+
+Reader and Writer
+
+Key Considerations
+
+📅 Date: 23 January 2026
+
+📘 Topic
+
+Exceptions
+
+Types of Exceptions
+
+Checked Exceptions
+
+Unchecked Exceptions
+
+Custom Exceptions
+
+Handling Exceptions
+
+try-catch blocks
+
+try-catch-finally blocks
+
+try-with-resources statement
+
+throws clause
+
+throw statement
+
+Creating Custom Exceptions
+
+Extending Exception Class
+
+Defining Constructors
+
+📅 Date: 26 January 2026
+
+📘 Topic
+
+Regex, MetaCharacter, Quantifier
+
+Common Patterns:
+
+Email Validation
+
+Password Strength
+
+Phone Number Format
+
+C# Regex API
+
+Pattern
+
+Matcher
+
+Methods: find(), matches(), replaceAll()
+
+Introduction to NUnit Framework
+
+NUnit Annotations
+
+Writing Test Cases
+
+Structure of a Test Class
+
+Assertions
+
+📅 Date: 27 January 2026
+
+📘 Topic
+
+Introduction to Annotations
+
+Common Built-in Annotations
+
+Creating Custom Annotations
+
+Advanced Custom Annotations
+
+Real-World Use Cases
+
+Annotation Processing Tools
+
+Reflection
+
+Understanding of Reflection
+
+Using Reflection in .NET
+
+Annotations and Reflection
+
+📅 Date: 28 January 2026
+
+📘 Topic
+
+Introduction to CSV
+
+Reading CSV Files
+
+Writing CSV Files
+
+Parsing CSV Data
+
+Data Validation
+
+📅 Date: 29 January 2026
+
+📘 Topic
+
+Introduction to JSON
+
+Reading JSON Data
+
+Writing JSON Data
+
+Parsing JSON Data
+
+JSON Schema Validation
+
+📅 Date: 30 January 2026
+
+📘 Topic
+
+Solved One Scenario-Based Questions on Lexical Twist
+
+📅 Date: 31 January 2026
+
+📘 Topic
+
+Solved One Scenario-Based Questions on Future Logistics
