@@ -580,3 +580,221 @@ Solved One Scenario-Based Questions on Lexical Twist
 📘 Topic
 
 Solved One Scenario-Based Questions on Future Logistics
+
+📅 Date: 02 February 2026
+
+📘 Topic
+
+Object-Oriented Design Principles
+
+SOLID Principles (SRP, OCP, LSP, ISP, DIP)
+
+KISS, DRY, and DIY principles
+
+Understanding clean design, responsibility separation, and dependency management
+
+📅 Date: 03 February 2026
+
+📘 Topic
+
+Introduction to Design Patterns
+
+Creational Design Patterns (Singleton, Factory Method, Abstract Factory, Builder, Prototype)
+
+Structural Design Patterns (Adapter, Bridge, Composite, Decorator, Facade, Proxy)
+
+Behavioral Design Patterns (Observer, Strategy, Command, State, Template Method, Iterator, Mediator)
+
+Use cases and benefits of design patterns in real-world applications
+
+📅 Date: 04 February 2026
+
+📘 Topic
+
+Multithreading in .NET
+
+Thread vs Task
+
+Threading models (Thread, ThreadPool, TPL, async/await)
+
+Synchronization concepts (lock, Mutex, Semaphore, Interlocked, Concurrent Collections)
+
+Problems like race condition, deadlock, and starvation
+
+Best practices for writing safe and efficient multithreaded code
+
+📅 Date: 05 February 2026
+
+📘 Topic
+
+SQL and RDBMS Fundamentals
+
+Database design principles and normalization (1NF, 2NF, 3NF, BCNF)
+
+Primary keys, foreign keys, and constraints
+
+Relationships between tables
+
+Basic SQL commands (SELECT, INSERT, UPDATE, DELETE)
+
+Joins, subqueries, and aggregate functions
+
+Transactions, ACID properties, indexing, and query optimization
+
+Database security and performance basics
+
+📅 Date: 06 February 2026
+
+📘 Topic
+
+Microsoft SQL Server (MSSQL) Concepts
+
+SQL Server syntax and core programming concepts
+
+Constraints and keys (Primary, Foreign, Unique, Check, Default)
+
+Joins and subqueries (INNER, LEFT, RIGHT, FULL, nested, correlated)
+
+Aggregate functions and grouping (COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING)
+
+Stored procedures and user-defined functions (Scalar and Table-valued)
+
+Views and data abstraction
+
+Cursors and row-by-row processing concepts
+
+DCL commands (GRANT, REVOKE, DENY) and role management
+
+📅 Date: 07 February 2026
+
+📘 Topic
+
+Solved practical problems based on SQL and RDBMS concepts
+
+Hands-on practice with database design and normalization
+
+Worked on keys, constraints, and table relationships
+
+Practiced joins, subqueries, and transactions
+
+Worked with stored procedures, functions, and views
+
+Focused on performance optimization and security scenarios
+
+📅 Date: 09 February 2026
+
+📘 Topic
+
+Hands-On Project: Hospital Management System (Database)
+
+Designed complete database schema with tables, keys, relationships, and constraints
+
+Worked on SQL queries, joins, subqueries, and transactions
+
+Applied indexing, triggers, and performance tuning concepts
+
+Planned core modules like Patient Management, Doctor Management, Appointments, Visits, and Billing
+
+Focused on real-world database design and industry-style implementation
+
+📅 Date: 10 February 2026
+
+📘 Topic
+
+Implemented patient management features in the database
+
+Worked on storing, updating, and searching patient records
+
+Designed queries to fetch patient visit history using joins and sorting
+
+Implemented doctor profile management with specialization and status handling
+
+Worked on appointment booking, availability checks, cancellation, and rescheduling logic
+
+Generated daily appointment schedules using multi-table queries
+
+📅 Date: 11 February 2026
+
+📘 Topic
+
+Implemented visit management and medical records storage
+
+Worked on recording diagnoses, prescriptions, and visit notes
+
+Ensured transactional consistency between visits and appointment status updates
+
+Designed queries to view complete patient medical history
+
+Implemented support for multiple prescriptions per visit using one-to-many relationships
+
+📅 Date: 12 February 2026
+
+📘 Topic
+
+Implemented billing and payment management features
+
+Worked on bill generation using consultation fees and additional charges
+
+Used aggregate functions for total calculation and reporting
+
+Implemented payment recording with transaction handling
+
+Designed queries to view unpaid bills with patient details
+
+Generated revenue reports using grouped queries and date range filters
+
+📅 Date: 13 February 2026
+
+📘 Topic
+
+Completed Healthcare Project with final implementation and testing.
+
+Started a new project named TechVilla and set up the initial project structure.
+
+Reviewed project flow and prepared the base architecture for further development.
+
+📅 Date: 14 February 2026
+
+📘 Topic
+
+Continued development of the TechVilla project.
+
+Implemented core features of the application.
+
+Integrated database functionalities into the project.
+
+Worked on applying full-stack console application concepts in the project.
+
+📅 Date: 15 February 2026
+
+📘 Topic
+
+Completed the TechVilla project with final testing and refinements.
+
+Revised DBMS concepts through practical examples.
+
+Revised ADO.NET concepts and practiced database connectivity and operations.
+
+Focused on strengthening overall database-related concepts.
+
+📅 Date: 16 February 2026
+
+📘 Topic
+
+Revised all topics for the upcoming Module 1 test.
+
+Practiced sample problems from previously learned concepts.
+
+Cleared doubts and reviewed important areas to ensure test readiness.
+
+📅 Date: 17 February 2026
+
+📘 Topic
+
+Started learning ASP.NET and its basics.
+
+Studied ASP.NET structure, controls, and event handling.
+
+Initiated the Major Project: Quantity Management App.
+
+Set up the initial project architecture and basic project structure.
